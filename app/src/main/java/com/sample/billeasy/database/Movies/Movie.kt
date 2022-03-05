@@ -7,19 +7,25 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Movie")
 class Movie {
-
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "movie_id")
     var movie_id: Int = 0
 
-    @ColumnInfo(name = "movie_img")
-    lateinit var movie_img: String
+    @ColumnInfo(name = "original_language")
+    lateinit var original_language: String
 
-    @ColumnInfo(name = "movie_name")
-    lateinit var movie_name: String
+    @ColumnInfo(name = "original_title")
+    lateinit var original_title: String
 
-    @ColumnInfo(name = "movie_desc")
-    lateinit var movie_desc: String
+    @ColumnInfo(name = "overview")
+    lateinit var overview: String
 
+    @ColumnInfo(name = "popularity")
+    lateinit var popularity: String
 
+    @ColumnInfo(name = "release_date")
+    lateinit var release_date: String
+
+    @ColumnInfo(name = "title")
+    lateinit var title: String
 }

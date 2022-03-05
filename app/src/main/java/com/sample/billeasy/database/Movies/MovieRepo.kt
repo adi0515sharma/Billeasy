@@ -22,7 +22,10 @@ class MovieRepo constructor(private val movieDao: MovieDao) {
     }
 
     fun insertAllMovies(movies : List<Movie>){
-        movieDao.insertMovies(movies).subscribeOn(Schedulers.io()).subscribe {
+        movieDao
+            .insertMovies(movies)
+            .subscribeOn(Schedulers.io())
+            .subscribe {
             Log.e("Number of movies added","${it.size}")
         }
     }

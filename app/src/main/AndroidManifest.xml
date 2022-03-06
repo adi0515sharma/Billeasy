@@ -13,14 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Billeasy">
-        <activity android:name=".ui.BilleasyHomePage">
+
+        <activity
+            android:exported="true"
+            android:name=".ui.BilleasyHomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".utils.NetworkConnectivity" >
+
+        <receiver
+            android:name=".utils.NetworkConnectivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />

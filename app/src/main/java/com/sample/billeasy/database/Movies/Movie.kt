@@ -28,4 +28,7 @@ class Movie {
 
     @ColumnInfo(name = "title")
     lateinit var title: String
+
+    @ColumnInfo(name = "backdrop_path")
+    lateinit var backdrop_path: String
 }

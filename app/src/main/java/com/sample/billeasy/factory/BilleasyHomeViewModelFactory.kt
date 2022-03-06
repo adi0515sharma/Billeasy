@@ -10,7 +10,7 @@ class BilleasyHomeViewModelFactory (private val iur : MovieRepo)
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(BHPViewmodel::class.java)) {
-            return BHPViewmodel(iur) as T
+            return BHPViewmodel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

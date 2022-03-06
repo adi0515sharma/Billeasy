@@ -25,6 +25,7 @@ class BHPViewmodel(): ViewModel() {
     }
 
     private val movieListObserver = Observer<List<Movie>> {
+        Log.e("total number of data","${it.size}")
         all_movie_list.value = it
     }
 
@@ -33,33 +34,20 @@ class BHPViewmodel(): ViewModel() {
     }
 
     public fun fetch_all_movie_list_from_roomdb(){
-        movie_repo.returnFetchUpdatedRecords().observeForever(movieListObserver)
+
+        movie_repo.returnFetchUpdatedRecords()
+            .observeForever(movieListObserver)
         movie_repo.fetchUpdatedChats()
+    }
+
+    fun fetch_all_movie_from_server(){
+        movie_repo.fetchingMovies()
+
     }
 
     override fun onCleared() {
         movie_repo.returnFetchUpdatedRecords().removeObserver(movieListObserver)
         super.onCleared()
     }
-
-    fun fetch_all_movie_from_server(){
-
-        viewModelScope.launch {
-            var s_a : server_apis = RetrofitObjectInstance.getInstance().create(server_apis::class.java)
-            var results : Response<All_Movie_Data> = s_a.getRegistered(
-                "508eca39454ac228bd182e5463a76905",
-                "en-US",
-                "1"
-            )
-            if(results.isSuccessful){
-                Log.e("url", results.message())
-                if(results.body()?.results!!.size>0){
-                    movie_repo.insertAllMovies(results.body()?.results!!)
-                }
-            }
-        }
-
-    }
-
 
 }

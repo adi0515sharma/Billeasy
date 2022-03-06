@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
+import android.util.Log
+import org.greenrobot.eventbus.EventBus
 
 
 class NetworkConnectivity : BroadcastReceiver() {
@@ -17,12 +19,15 @@ class NetworkConnectivity : BroadcastReceiver() {
 
         val mobile = connMgr
             .getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
-
+        Log.e("is connected","yelkm,s")
         if (wifi!!.isConnected || mobile!!.isConnected) {
-            // do stuff
+            Log.e("is connected","yes")
+            EventBus.getDefault().post("Connected");
         }
         else{
+            Log.e("is connected","no")
 
+            EventBus.getDefault().post("Not Connected");
         }
 
     }
